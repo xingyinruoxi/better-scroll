@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            width: 100vw;
+            position: relative;
+            text-align: center;
+            background: #f2f2f2;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .list {
+            /*margin-top: 60px;*/
+            margin-top: 80px;
+        }
+
+        .list li {
+            font: 20px/40px "宋体"
+        }
+        .selected{
+            position: absolute;
+            top: 80px;
+            left: 0;
+            box-sizing: border-box;
+            width: 100vw;
+            height: 40px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="list">
+        <li class="list-item">1</li>
+        <li class="list-item">2</li>
+        <li class="list-item">3</li>
+        <li class="list-item">4</li>
+        <li class="list-item">5</li>
+        <li class="list-item">6</li>
+        <li class="list-item">7</li>
+        <li class="list-item">8</li>
+    </ul>
+    <div class="selected">&nbsp;</div>
+</div>
+</body>
+<script src="js/bscroll.js"></script>
+<script>
+    (function () {
+        var oWrap = document.querySelector('.wrap');
+        var oList = document.querySelector('.list');
+        var arrNavA = document.querySelectorAll('.nav a')
+        var wheel = new BScroll(oWrap, {
+            wheel: {
+                selectedIndex: 2,
+                rotate: 36,
+                adjustTime: 400,
+                wheelWrapperClass: 'list',
+                wheelItemClass: 'list-item'
+            }
+        });
+        wheel.on('scrollEnd',function () {
+            console.log(45678,this.getSelectedIndex());
+        })
+    })()
+</script>
+</html>

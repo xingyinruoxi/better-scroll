@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上拉加载</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        body, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap{
+            overflow: hidden;
+            height: 100vh;
+        }
+        .list li {
+            font-size: 14px;
+            line-height: 34px;
+            height: 34px;
+            border-bottom: 1px solid #dddddd;
+            text-indent: 10px;
+        }
+        .pullup:after{
+            content: '加载更多';
+            text-align: center;
+            display: block;
+            font-size: 13px;
+            color: #bbb;
+            padding: 8px 0;
+        }
+        .pulldown:before{
+            content: '加载更多';
+            text-align: center;
+            display: block;
+            font-size: 13px;
+            color: #bbb;
+            padding: 8px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="list">
+    </ul>
+</div>
+</body>
+<script src="js/bscroll.js"></script>
+<script>
+    (function () {
+        let wrap = document.querySelector('.wrap');
+        let list = document.querySelector('.list');
+        let inner = '';
+        for (let i = 1; i < 50; i++) {
+            inner += '<li>这是第' + i + '个元素</li>';
+        }
+
+        list.innerHTML = inner;
+        let bscroll=new BScroll(wrap,{
+            pullUpLoad: {
+                threshold: 50
+            },
+            pullDownRefresh: {
+                threshold: -50,
+                stop: 20
+            }
+        });
+        /*上滑加载*/
+        bscroll.on('pullingUp',function () {
+            list.classList.add('pullup');
+            setTimeout(function () {
+                let inner='';
+                for(var i=0;i<10;i++){
+                    inner+='<li>这是新增的第'+i+'个元素</li>'
+                }
+                list.innerHTML+=inner;
+                list.classList.remove('pullup');
+                bscroll.finishPullUp();
+                bscroll.refresh();
+            },2000)
+        })
+        /*下拉加载*/
+        bscroll.on('pullingDown',function () {
+            list.classList.add('pulldown');
+            setTimeout(function () {
+                let inner='';
+                for(var i=0;i<10;i++){
+                    inner+='<li>这是新增的第'+i+'个元素</li>'
+                }
+                list.innerHTML=inner+list.innerHTML;
+                list.classList.remove('pulldown');
+                bscroll.finishPullDown();
+                bscroll.refresh();
+            },2000)
+        })
+    })();
+</script>
+</html>
