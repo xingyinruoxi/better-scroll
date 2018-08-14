@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <style>
+        html {
+            font-size: calc(100vw / 7.5);
+        }
+
+        body {
+            font-size: .20rem;
+        }
+
+        body, ul, li, ol {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            height: 100vh;
+            background: #ddd;
+            /*overflow: hidden;*/
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #333;
+            color: #fff;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .content {
+            flex: 1;
+            background: #f2f2f2;
+            overflow: hidden;
+        }
+
+        .box {
+            height: 4rem;
+            overflow: hidden;
+            background: red;
+            color: #f2f2f2
+        }
+
+        .title {
+            background: red;
+            font-size: .26rem
+        }
+    </style>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_772852_ie429ra9y6l.css">
+</head>
+<body>
+<div class="wrap">
+    <header><span class="title">这是头部</span></header>
+    <div class="content">
+        <div>
+            <div class="box">box盒子</div>
+            <span style="display: inline-block;width: 100vw;background: #ccc;">erty</span>
+            <i class="iconfont icon-bangongbao"></i>
+            <i class="iconfont icon-piaofang"></i>
+            天喊醒载
+            <ul>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+                <li>人民的无可奈何</li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/bscroll.js"></script>
+<script>
+    (function () {
+        console.log(2345678);
+        // let oWrap=document.querySelector('.wrap');
+        let slide = new BScroll('.content');
+        // slide.refresh();
+    })()
+</script>
+</html>

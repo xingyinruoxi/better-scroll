@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            background: #fff;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .list {
+            width: 400vw;
+        }
+
+        .list li {
+            height: 150px;
+            font: 60px/150px '宋体';
+            text-align: center;
+            border: 1px solid #333333;
+            background: #f1f1f1;
+            box-sizing: border-box;
+            width: 100vw;
+            float: left;
+        }
+
+        .nav {
+            position: absolute;
+            width: 100vw;
+            bottom: 10px;
+            text-align: center;
+        }
+
+        .nav a {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+        }
+
+        .nav a.active {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <nav class="nav">
+        <a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </nav>
+</div>
+</body>
+<script src="js/bscroll.js"></script>
+<script>
+    (function () {
+        var oWrap = document.querySelector('.wrap');
+        var oList = document.querySelector('.list');
+        var arrNavA = document.querySelectorAll('.nav a')
+        var slide = new BScroll(oWrap, {
+            momentum: false,
+            scrollX: true,
+            scrollY: false,
+            snap: {
+                loop: true,
+                threshold: 0.2,
+            }
+        });
+        oList.style.width = oList.children.length + '00vw';
+        slide.refresh();
+        slide.on('scrollEnd', function () {
+            var curPage = this.getCurrentPage().pageX;
+            arrNavA.forEach(function (nav) {
+                nav.classList.remove('active');
+            });
+            // arrNavA[curPage].className='active'
+            arrNavA[curPage].classList.add('active');
+        });
+        setInterval(function () {
+            slide.next();
+        }, 2000)
+        slide.on('touchEnd', function () {
+            console.log(567);
+        })
+        slide.on('flick', function () {
+            slide.stop();
+            console.log('234567890-');
+        })
+    })()
+</script>
+</html>

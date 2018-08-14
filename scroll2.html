@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap {
+            background: #fff;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div>
+        <ul class="list">
+        </ul>
+        <input type="text" placeholder="1234567890-=">
+    </div>
+</div>
+</body>
+<script src="js/bscroll.js"></script>
+<script>
+    (function () {
+        var oList = document.querySelector('.list');
+        var oWrap = document.querySelector('.wrap');
+        var inner = '';
+        for (var i = 0; i < 100; i++) {
+            inner += '<li>' + (i + 1) * 111 + '</li>'
+        }
+        oList.innerHTML = inner;
+        var scroll = new BScroll(oWrap, {
+            startY: 0,
+            bounceTime: 600,
+            scrollbar: {
+                fade: true,
+                interactive: true
+            },
+            pullDownRefresh: {
+                threshold: 50,
+                stop: 20
+            },
+            pullUpLoad: {
+                threshold: 50
+            },
+            mouseWheel: true
+        });
+        scroll.on('scrollStart', function () {
+            console.log(456789);
+        });
+        scroll.on('scrollEnd', function () {
+            console.log('滚动结束');
+        })
+        scroll.on('pullingDown', function () {
+            console.log('下拉刷新 ');
+        })
+    })()
+</script>
+</html>
