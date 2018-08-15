@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手机端大小适配</title>
+    <meta name="description" content="MSUI: Build mobile apps with simple HTML, CSS, and JS components.">
+    <meta name="author" content="阿里巴巴国际UED前端">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        html{
+            font-size: 13.33333vw;
+        }
+        body, ul, li, ol, dl, dt, dd, h1, h2, h3, h4, h5 {
+            padding: 0;
+            margin: 0;
+        }
+
+        a, button, input {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none;
+        }
+
+        body * {
+            -webkit-text-size-adjust: none;
+            font-size: .3rem;
+        }
+        body{
+            /*background: #000;*/
+        }
+        .box{
+            width: 50vw;
+            height: 50vw;
+            background: red;
+            color: #ffffff;
+            text-align: center;
+        }
+        .box2{
+            width: 3.75rem;
+            height: 3.75rem;
+            background:yellow;
+            float: left;
+        }
+        .box3{
+            margin-top: 70px;
+            width: 50%;
+            background: skyblue;
+            height: 80px;
+        }
+        .line{
+            height: 0.02rem;
+            background: red;
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="line"></div>
+
+<div class="box">box</div>
+<div class="box2">box</div>
+<div class="box2" style="background: red;">box</div>
+</body>
+</html>
