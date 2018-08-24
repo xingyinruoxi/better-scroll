@@ -81,7 +81,8 @@
     (function () {
         var oWrap = document.querySelector('.wrap');
         var oList = document.querySelector('.list');
-        var arrNavA = document.querySelectorAll('.nav a')
+        var arrNavA = document.querySelectorAll('.nav a');
+        var timer = null;
         var slide = new BScroll(oWrap, {
             momentum: false,
             scrollX: true,
@@ -101,15 +102,19 @@
             // arrNavA[curPage].className='active'
             arrNavA[curPage].classList.add('active');
         });
-        setInterval(function () {
+
+        function next() {
             slide.next();
-        }, 2000)
+        }
+
+        timer = setInterval(next, 2000);
         slide.on('touchEnd', function () {
-            console.log(567);
-        })
-        slide.on('flick', function () {
-            slide.stop();
-            console.log('234567890-');
+            timer = setInterval(next, 2000);
+            console.log('touchEnd');
+        });
+        slide.on('beforeScrollStart', function () {
+            clearTimeout(timer);
+            console.log('beforeScrollStart');
         })
     })()
 </script>
