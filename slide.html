@@ -103,17 +103,25 @@
             arrNavA[curPage].classList.add('active');
         });
 
+        /* function play() {
+             clearInterval(timer);
+             timer=setInterval(function () {
+                 slide.next();
+             },2000)
+         }*/
+
         function next() {
             slide.next();
         }
 
         timer = setInterval(next, 2000);
         slide.on('touchEnd', function () {
+            clearInterval(timer);
             timer = setInterval(next, 2000);
             console.log('touchEnd');
         });
         slide.on('beforeScrollStart', function () {
-            clearTimeout(timer);
+            clearInterval(timer);
             console.log('beforeScrollStart');
         })
     })()
