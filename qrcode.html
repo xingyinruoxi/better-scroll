@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>qrcode</title>
+    <script src="js/lib/jquery.js"></script>
+    <script src="js/lib/jquery.qrcode.min.js"></script>
+    <style>
+       /* #output canvas{
+            width: 200px;
+        }*/
+    </style>
+</head>
+
+<body>
+<div id="output">
+
+</div>
+<script>
+    $(function () {
+       $('#output').qrcode({
+           render: "canvas", //也可以替换为table
+           width: 240,
+           height: 240,
+           foreground: "skyblue",
+           background: "#f2f2f2",
+           text: "http://www.jq22.com"
+       })
+    });
+</script>
+</body>
+</html>
